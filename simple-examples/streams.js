@@ -8,7 +8,18 @@ const fs = require('fs');
 // })
 
 const readStream = fs.createReadStream('./streams.txt', 'utf8');
-readStream.on('data', (chunk) => {
-  //get a chunk of data
-  console.log(chunk);
-})
+// readStream.on('data', (chunk) => {
+//   //get a chunk of data
+//   console.log(chunk);
+// })
+
+//send data to a file while reading the data
+//think about netflix
+const writeStream = fs.createWriteStream('./streams_write.txt', 'utf8');
+// readStream.on('data', (chunk) => {
+//   //get a chunk of data
+//   writeStream.write(chunk);
+// })
+
+//pipes syntax is shorter 
+readStream.pipe(writeStream);
